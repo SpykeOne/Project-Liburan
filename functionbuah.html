@@ -1,0 +1,83 @@
+<script>
+    let menu = 0
+    const keranjang = []
+    const listBuah = [
+        ['apel', 10, 10000 ],
+        ['jeruk', 5, 5000],     
+        ['nanas', 8, 5000], 
+        ['manggis', 7, 5000], 
+        ['mangga', 9, 5000], 
+]
+
+    function daftarBuah(){
+        let infoBuah = ''
+        for(let i = 0; i < listuah.length; i++){
+            infoBuah += `Buah ${listBuah[i][0]} Total Stock
+            ${listBuah[i][1]} Harga Rp.${listBuah[i][2]} \n`
+        }
+        alert(infoBuah)
+    }
+    function nambahBuah(){
+        let temp = []
+        let buah = prompt ('Silahkan masukkan nama buah yang ingin ditambahkan')
+        for(let i = 0; i < fruits.length; i++){
+            temp.push(listBuah[i][0])
+        }
+        if (!temp.includes(buah)){
+            alert('buah tidak ditemukan')
+        }
+        if (!keranjang.includes(buah)){
+            keranjang.push(buah)
+        }
+    }
+    function hapusBuah(){
+        let Cart = keranjang.length? keranjang.join(', '): ''
+        let deletedFruits = prompt('Buah apa yang ingin dihapus? \n Daftar Keranjang: ' + Cart)
+        if(!keranjang.includes(deletedFruits)){
+            alert(deletedFruits + 'tidak ditemukan')
+        }
+        else{
+            keranjang.splice(keranjang.indexOf(deletedFruits),1)
+        }
+    }
+    function beliBuah(){
+        let qty = 0
+        let TotalHarga = 0
+        let show = ''
+
+        for(let i=0;i<keranjang.length;i++){
+            qty = prompt(`Berapa quantity buah ${keranjang[i]} yang ingin dibeli?`)
+            for (let k=0;k<listBuah.length;k++){
+                if(listBuah[k].includes(keranjang[i])){
+                    show += `buah ${keranjang[i]} qty ${qty} @Harga Rp.${(listBuah[listBuah.indexOf(keranjang[i])[2]])} Total Rp.${qty *(listBuah[i][2])} \n`
+                    TotalHarga += qty *(listBuah[i][2])
+                } alert(indexOf(keranjang))
+            }
+        }
+        let check = prompt(`apakah anda yakin membeli \n ${show} Total Harga: Rp${TotalHarga} \n 1. Ya \n 2. Tidak`)
+        if(check == 1){
+            menu = 5
+        }
+    }
+    while (menu != 5) {
+        menu = prompt(`
+        1. Menampilkan daftar buah \n
+        2. Menambah buah \n
+        3. Menghapus buah \n
+        4. Membeli buah \n
+        5. Exit`)
+
+        if(menu == 1){
+            daftarBuah()
+        }
+        else if(menu == 2){
+            nambahBuah()
+        }
+        else if(menu == 3){
+            hapusBuah()
+        }
+        else if(menu == 4){
+            beliBuah()
+        }
+    }
+</script>
