@@ -1,39 +1,42 @@
 <script>
-function myFunction(kendaraan, duration) {
+    let firstHour
+    let feePerHour
+    let maxFee
+    let kendaraan = prompt('anda memakai kendaraan apa?\n 1. mobil \n 2. motor')
+    let duration = prompt('berapa jam anda parkir?')
+    function myFunction(kendaraan, duration) {
+    if (kendaraan == 1) {
+       
+        firstHour = 4000
+        feePerHour = 3000
+        maxFee = 25000
+    }
+    else if (kendaraan == 2) {
+        
+        firstHour = 3000
+        feePerHour = 2000
+        maxFee = 20000
+    }
+    else {
+        alert('kendaraan tidak sesuai')
+    }
 
-let firstHour;
-let feePerHour;
-let maxFee;
-let fee = 0;
+    let fee = 0
 
-if (kendaraan === 'mobil') {
-   //kendaraan mobil
-  firstHour = 4000;
-  feePerHour = 3000;
-  maxFee = 25000;
-}
-else if (kendaraan === 'motor') {
-  //kendaraan motor
-  firstHour = 3000;
-  feePerHour = 2000;
-  maxFee = 20000;
-}
-else {
-  alert("error");
-}
 
-if (duration < 2 && parseFloat(duration) > 0.17) {
-  fee = firstHour;
-}
-else if (duration >= 2 && duration) {
-  fee = firstHour + ((duration - 1) * feePerHour);
-}
+    if (duration < 2 && parseFloat(duration) > 0.17) {
+        fee = firstHour
+    }
+    else if (duration >= 2 && duration) {
+        fee = firstHour + ((duration - 1) * feePerHour)
+    }
 
-if (fee > maxFee) {
-  fee = maxFee;
-}
+    if (fee > maxFee) {
+        fee = maxFee
+    }
 
-alert("Biaya total parkir anda adalahn Rp" + fee);
-}
-myFunction(kendaraan, duration)
+    alert(`Biaya total parkir anda adalahn Rp.${fee}`)
+
+    }
+    myFunction(kendaraan,duration)
 </script>
